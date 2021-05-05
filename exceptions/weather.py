@@ -1,14 +1,14 @@
 class WeatherServiceException(Exception):
-    pass 
+    status_code = 403
 
 class WeatherServiceDownException(WeatherServiceException):
-    pass 
+    status_code = 500 
 
 class WeatherServiceInvalidParametersException(WeatherServiceException):
-    pass 
+    status_code = 403 
 
 class WeatherServiceInvalidAPIKeyException(WeatherServiceException):
-    pass
+    status_code = 401
 
 class WeatherServiceRateLimitedException(WeatherServiceException):
-    pass
+    status_code = 429
