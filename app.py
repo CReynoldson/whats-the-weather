@@ -1,12 +1,13 @@
+import json
 from flask import Flask 
 from config import Config
-from api.v1.routes import v1_api
-# from services.weather import WeatherService
 
 app = Flask(__name__)
 
-app.config.from_object(Config.DEFAULT_SETTINGS)
+app.config.from_object(Config)
 
-# weather_service = WeatherService(app.config.get("WEATHER_SERVICE_API_KEY"))
+from services.initialize_services import get_weather_service
+weather_service = get_weather_service()
 
+from api.v1.routes import v1_api
 app.register_blueprint(v1_api)
