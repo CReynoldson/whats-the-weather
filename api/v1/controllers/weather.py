@@ -8,10 +8,13 @@ class WeatherHelper():
     ARGUMENTS_WHITELIST = ["city", "latitude", "longitude"]
 
     def __init__(self, *args):
-        for key, value in args[0].items():
-            if key in self.ARGUMENTS_WHITELIST:
-                self.__setattr__(key, value)
-
+        try:
+            print("args", args)
+            for key, value in args[0].items():
+                if key in self.ARGUMENTS_WHITELIST:
+                    self.__setattr__(key, value)
+        except IndexError:
+            raise IndexError("Cannot initialize Weather Helper with no arguments.")
     def format_response(self, response):
         """
         Parses OpenWeather API response and returns only the relevant weather data
@@ -31,7 +34,8 @@ class WeatherHelper():
         For now, let's just have it validate that we have something to base our query on
         :rtype => dict
         """
-        if not self.city:
-            raise WeatherServiceInvalidParametersException("Please provide a city, we simply cannot tell you the weather in a city without a city to check")
+        if not getattr(self, "city", None):
+            raise WeatherServiceInvalidParametersException("Please provide a city, we simply cannot tell you the weather in a city without a city to check.")
+        
         service_response = weather_service.get_weather_by_city_name(self.city)
         return self.format_response(service_response)

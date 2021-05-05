@@ -4,6 +4,8 @@ from exceptions.weather import WeatherServiceException, WeatherServiceDownExcept
 
 class WeatherService():
     def __init__(self, token=""):
+        if not token:
+            raise AttributeError("Cannot initialize Weather Service without an API token.")
         self.api_key = token
         self.base_url = "https://api.openweathermap.org/data/2.5/weather"
 
