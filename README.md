@@ -1,17 +1,17 @@
 # Welcome To What's The Weather, Your Friendly Neighbourhood Weatherbuddy
 
 ## Notes
-What's The Weather is built on Flask, a lightweight Python microframework. I chose Flask because it is quick to get up and running while providing multiple customization options. Since this is a small API proxy app I didn't feel the need to use a larger framework like Django. On the downside, Flask does not provide an out of the box solution to production deployment, which I believe larger frameworks have.
+What's The Weather is built on Flask, a lightweight Python microframework. I chose Flask because it is quick to get up and running while providing multiple customization options. Since this is a small API proxy app I didn't feel the need to use a larger framework like Django. On the downside, Flask does not provide an out-of-the-box solution to production deployment, which I believe larger frameworks have.
 
 Had I implemented a UI I would have used React to more easily handle front end data and user interactions than if I were using a static templating library like Jinja2. 
 
 The bundle size for React would be larger than something like Jinja2 scripts, but I think it makes up for that by making the UX easier to implement, and the bundle size issue can be mitigated by chunking the packages and having an efficient webpack setup.
 
 ### Date
-6 May 2021
+7 May 2021
 
 ### Location of deployed application
-You can access What's The Weather [here](http://quiet-anchorage-65722.herokuapp.com/v1/weather?city=Vancouver),
+You can access What's The Weather [here](http://quiet-anchorage-65722.herokuapp.com) if you want to see a very boring index page, [here](http://quiet-anchorage-65722.herokuapp.com/v1/weather?city=Vancouver) for light-hearted lack-of-api-token shaming, and finally [here](http://quiet-anchorage-65722.herokuapp.com/v1/weather?city=Vancouver&app-token=PatrickIsPurrfect) to send a functional and authenticated request.
 
 or from the comfort of your own local installation by following the instructions below.
 
@@ -24,7 +24,7 @@ or from the comfort of your own local installation by following the instructions
 - 1 hour adding data manipulation and error handling to the controller and route files
 - 45 minutes adding files and environment config for deploying to Heroku 
 - 30 minutes writing the Readme because I'm the odd duck that enjoys writing documentation
-
+- 30 minutes to add authentication handling with hardcoded variable
 
 ### Assumptions made
 My user story for this was focused on non-scientific users who just want to get a layperson's view of the weather. As a result I limited the precision of the temperature values to 2 decimal places, which I assume is too vague for if that data were being used in a meteorological society app, for example. 
@@ -51,7 +51,9 @@ Deploying to Heroku was straightforward, but I regret spending time figuring out
 
 3. Once you're safely in your virtual environment, run `pip install -r requirements.txt` to download dependencies
 
-4. Run the app with `python main.py` - please note, this app requires python3 so depending on your personal paths set up you may need to run `python3 main.py` instead.
+4. Run the app with `python main.py` - please note, this app requires python3 so depending on your personal path set up you may need to run `python3 main.py` instead. You know how to get to python3 on your own computer better than I do, so I shan't tell you how to live your life. 
+
+5. For maximum enjoyment and profit you will want to add `app-token=PatrickIsPurrfect` to your query parameters. Patrick is my cat and he walked across the keyboard often enough during this challenge that I felt he should be included in some way.
 
 
 ### What did you not include in your solution that you want us to know about?
@@ -77,5 +79,6 @@ I think it would be nice if this section was clearer - leaving the task slightly
 
 I do think it's reasonable to assume I should have contacted the person who sent me the document, but if it doesn't really make a difference to the way the challenge is conveyed to applicants I think a bit of clarification would be preferable to making an assumption.
 
+Overall this was a lot of fun and I'm glad there was a time limit because I could definitely have kept plunking away at it for several more hours!
 
 
