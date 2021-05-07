@@ -12,3 +12,9 @@ class WeatherServiceInvalidAPIKeyException(WeatherServiceException):
 
 class WeatherServiceRateLimitedException(WeatherServiceException):
     status_code = 429
+
+class WeatherServiceControllerException(WeatherServiceException):
+    """
+    Use internally to flag coding errors or potential data mismanagement
+    """
+    status_code = 500
