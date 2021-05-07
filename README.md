@@ -1,4 +1,4 @@
-# Welcome To What's The Weather, Your Friendly Neighbourhood Weatherbuddy
+# Welcome To What's The Weather - Your Friendly Neighbourhood Weather Buddy
 
 ## Notes
 What's The Weather is built on Flask, a lightweight Python microframework. I chose Flask because it is quick to get up and running while providing multiple customization options. Since this is a small API proxy app I didn't feel the need to use a larger framework like Django. On the downside, Flask does not provide an out-of-the-box solution to production deployment, which I believe larger frameworks have.
