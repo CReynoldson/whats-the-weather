@@ -13,7 +13,7 @@ The bundle size for React would be larger than something like Jinja2 scripts, bu
 ### Location of deployed application
 You can access What's The Weather [here](http://quiet-anchorage-65722.herokuapp.com) if you want to see a very boring index page, [here](http://quiet-anchorage-65722.herokuapp.com/v1/weather?city=Vancouver) for light-hearted lack-of-api-token shaming, and finally [here](http://quiet-anchorage-65722.herokuapp.com/v1/weather?city=Vancouver&app-token=PatrickIsPurrfect) to send a functional and authenticated request.
 
-or from the comfort of your own local installation by following the instructions below.
+Or, access it from the comfort of your own local installation by following the instructions below.
 
 ### Time spent
 - 30 minutes planning (including overzealously plotting stretch work I then didn't have time to do)
