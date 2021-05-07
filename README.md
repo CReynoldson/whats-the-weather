@@ -11,7 +11,7 @@ The bundle size for React would be larger than something like Jinja2 scripts, bu
 7 May 2021
 
 ### Location of deployed application
-You can access What's The Weather [here](http://quiet-anchorage-65722.herokuapp.com) if you want to see a very boring index page, [here](http://quiet-anchorage-65722.herokuapp.com/v1/weather?city=Vancouver) for light-hearted lack-of-api-token shaming, and finally [here](http://quiet-anchorage-65722.herokuapp.com/v1/weather?city=Vancouver&app-token=PatrickIsPurrfect) to send a functional and authenticated request.
+You can access What's The Weather [here](http://quiet-anchorage-65722.herokuapp.com) if you want to see a very boring index page, [here](http://quiet-anchorage-65722.herokuapp.com/v1/weather?city=Vancouver) for light-hearted lack-of-api-token shaming, and finally [here](http://quiet-anchorage-65722.herokuapp.com/v1/weather?city=Vancouver&app-token=PatrickIsPurrfect) to send an authenticated request.
 
 Or, access it from the comfort of your own local installation by following the instructions below.
 
@@ -54,7 +54,7 @@ Deploying to Heroku was straightforward, but I regret spending time figuring out
 
 4. Run the app with `python main.py` - please note, this app requires python3 so depending on your personal path set up you may need to run `python3 main.py` instead. You know how to get to python3 on your own computer better than I do, so I shan't tell you how to live your life. 
 
-5. For maximum enjoyment and profit you will want to add `app-token=PatrickIsPurrfect` to your query parameters. Patrick is my cat and he walked across the keyboard often enough during this challenge that I felt he should be included in some way.
+5. For maximum enjoyment and profit you will want to add `app-token=PatrickIsPurrfect` to your query parameters. Patrick is my cat and he walked across the keyboard often enough during this challenge that I felt he should be included in some way. So I made him the hard coded authentication token you need to use in order to access any of the weather data.
 
 
 ### What did you not include in your solution that you want us to know about?
@@ -65,9 +65,7 @@ The dropdown would be populated by a library (not sure which library; I'm making
 
 I believe having a searchable dropdown selector would be an overall better user experience, and it would also help with data integrity issues inherint in the API filter. 
 
-For example, what happens when a user searches the API with just "Portland"? As it is currently, they get weather for both Portland Maine, and Portland Oregon? But which one did they want and how are they able to specify that more clearly? 
-
-As a half measure it would be possible to track which data object is related to which city and display both of them, but I think as a user I would prefer just the city I asked for, and not also one across the country that happens to have the same name.
+For example, what happens when a user searches the API with just "Portland"? As it is currently, they get weather for both Portland Maine, and Portland Oregon? But which one did they want and how are they able to specify that more clearly? I think as a user I would prefer just the city I asked for, and not also one across the country that happens to have the same name. A drop down would help me avoid that. It would also help minimize user typos by prompting city options, rather than the user having to spell a city properly.
 
 
 Results from the API included all 3 temperature units (see Assumptions for more detail), and I would have had the weather details displayed in a box under the city drop down, with tabs to toggle between the different unit views. Clicking a tab would re-render the box with that unit's temperature data.
@@ -78,7 +76,7 @@ A stretch goal for the stretch goal was to integrate a map using Leaflet or Mapb
 The assignment document says to "feel free to ask questions or for clarification as needed", but I'm not sure who I would ask. The person that sent me the document?
 I think it would be nice if this section was clearer - leaving the task slightly vague definitely mimics the real world, but in the real world you also have a clear contact point if you have questions. 
 
-I do think it's reasonable to assume I should have contacted the person who sent me the document, but if it doesn't really make a difference to the way the challenge is conveyed to applicants I think a bit of clarification would be preferable to making an assumption.
+I do think it's reasonable to assume I should have contacted the person who sent me the document, but if it doesn't really make a difference to the way the challenge is conveyed to applicants I think a bit of clarification would be preferable to making an assumption in this instance.
 
 Overall this was a lot of fun and I'm glad there was a time limit because I could definitely have kept plunking away at it for several more hours!
 
