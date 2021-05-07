@@ -6,6 +6,7 @@ from api.v1.controllers.weather import WeatherHelper
 from services.weather import WeatherService
 from exceptions.weather import WeatherServiceInvalidAPIKeyException, WeatherServiceInvalidParametersException
 
+API_TOKEN = app.config.get("API_TOKEN")
 
 class TestWeatherAPI(unittest.TestCase):
     def test_route_failure_cases(self):
@@ -26,7 +27,11 @@ class TestWeatherAPI(unittest.TestCase):
 
                 response = client.delete("/v1/weather")
                 self.assertEqual(response.status_code, 405)
-    
+
+                # if you do use the right method, you need an authentication token
+                response = client.get("/v1/weather?city=Penticton")
+                self.assertEqual(response.status_code, 401)
+
     def test_controller_failure_cases(self):
         with app.test_client() as client:
             with app.app_context():
@@ -81,7 +86,7 @@ class TestWeatherAPI(unittest.TestCase):
                 self.assertEqual(helper.temperature_unit, "kelvin")
                 
                 # if we initialize the controller with a unit argument, we should see it set as an instance variable called 'temperature_unit'
-                helper = WeatherHelper({"city": "Dublin", "unit": "celsius"})
+                helper = WeatherHelper({"city": "Dublin", "unit": "celsius"}) # you can also run this with fahrenheit but I refuse to give in to manifest destiny
                 self.assertEqual(helper.temperature_unit, "celsius")
 
                 # attempting to initialize the controller with an invalid unit argument throws an error
@@ -92,7 +97,8 @@ class TestWeatherAPI(unittest.TestCase):
     def test_route_success_case(self):
         with app.test_client() as client:
             with app.app_context():
-                response = client.get("/v1/weather?city=Dublin")
+                response = client.get(
+                    f"/v1/weather?city=Halifax&app-token={API_TOKEN}")
                 response = response.json
                 self.assertEqual(response["results"], "success")
                 self.assertIn("data", response)
