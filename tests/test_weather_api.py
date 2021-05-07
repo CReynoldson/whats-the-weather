@@ -72,7 +72,23 @@ class TestWeatherAPI(unittest.TestCase):
                 helper = WeatherHelper({"city": "Merritt"})
                 response = helper.get_weather()
                 self.assertIsInstance(response, dict) 
-    
+
+    def test_controller_temperature_unit_cases(self):
+        with app.test_client() as client:
+            with app.app_context():
+                # if we initialize the controller without a unit argument, it should default the 'temperature_unit' instance variable to kelvin
+                helper = WeatherHelper({"city": "Dublin"})
+                self.assertEqual(helper.temperature_unit, "kelvin")
+                
+                # if we initialize the controller with a unit argument, we should see it set as an instance variable called 'temperature_unit'
+                helper = WeatherHelper({"city": "Dublin", "unit": "celsius"})
+                self.assertEqual(helper.temperature_unit, "celsius")
+
+                # attempting to initialize the controller with an invalid unit argument throws an error
+                with self.assertRaises(WeatherServiceInvalidParametersException):
+                    helper = WeatherHelper({"city": "Coeur de Coeur", "unit": "I will name a dog Digby one day and I will have #NoRagrets about it"})
+
+
     def test_route_success_case(self):
         with app.test_client() as client:
             with app.app_context():
