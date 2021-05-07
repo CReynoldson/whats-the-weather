@@ -13,6 +13,16 @@ The bundle size for React would be larger than something like Jinja2 scripts, bu
 ### Location of deployed application
 You can access What's The Weather [here](http://quiet-anchorage-65722.herokuapp.com) if you want to see a very boring index page, [here](http://quiet-anchorage-65722.herokuapp.com/v1/weather?city=Vancouver) for light-hearted lack-of-api-token shaming, and finally [here](http://quiet-anchorage-65722.herokuapp.com/v1/weather?city=Vancouver&app-token=PatrickIsPurrfect) to send an authenticated request.
 
+**Or CURL it if you'd like:**
+
+**Unathenticated Request**
+`curl 'http://quiet-anchorage-65722.herokuapp.com/v1/weather?city=Vancouver'`
+
+**Authenticated Request**
+`curl 'http://quiet-anchorage-65722.herokuapp.com/v1/weather?city=Vancouver&app-token=PatrickIsPurrfect'`
+
+Please note it's running on a hobby dyno so you may need to give it a moment to wake up!
+
 Or, access it from the comfort of your own local installation by following the instructions below.
 
 ### Time spent
@@ -70,13 +80,4 @@ For example, what happens when a user searches the API with just "Portland"? As 
 Results from the API included all 3 temperature units (see Assumptions for more detail), and I would have had the weather details displayed in a box under the city drop down, with tabs to toggle between the different unit views. Clicking a tab would re-render the box with that unit's temperature data.
 
 A stretch goal for the stretch goal was to integrate a map using Leaflet or Mapbox and allow users to select a city or lat/long pair and call the weather API with that data, which I thought would be a fun feature.
-
-### Your feedback on this technical challenge
-The assignment document says to "feel free to ask questions or for clarification as needed", but I'm not sure who I would ask. The person that sent me the document?
-I think it would be nice if this section was clearer - leaving the task slightly vague definitely mimics the real world, but in the real world you also have a clear contact point if you have questions. 
-
-I do think it's reasonable to assume I should have contacted the person who sent me the document, but if it doesn't really make a difference to the way the challenge is conveyed to applicants I think a bit of clarification would be preferable to making an assumption in this instance.
-
-Overall this was a lot of fun and I'm glad there was a time limit because I could definitely have kept plunking away at it for several more hours!
-
 
