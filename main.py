@@ -7,6 +7,6 @@ def the_root():
 
 if __name__ == "__main__":
     if environment == "development":
-        app.run(debut=True)
+        app.run(debug=True)
     else:
         app.run(host="0.0.0.0")
