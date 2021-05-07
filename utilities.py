@@ -10,6 +10,6 @@ def authenticated(f):
     def wrap(*args, **kwargs):
         token = request.args.get("app-token")
         if token != API_TOKEN:
-            return jsonify({"results": "failure", "message": "It's a low, low bar, and you couldn't even hit it."}), 401
+            return jsonify({"results": "failure", "message": "It's a low, low bar, and you couldn't even hit it. You're in the doldrums, pal."}), 401
         return f(*args, **kwargs)
     return wrap
