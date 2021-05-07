@@ -25,6 +25,7 @@ or from the comfort of your own local installation by following the instructions
 - 45 minutes adding files and environment config for deploying to Heroku 
 - 30 minutes writing the Readme because I'm the odd duck that enjoys writing documentation
 - 30 minutes to add authentication handling with hardcoded variable
+- 30 minutes review, bug fixing, general code cleanup
 
 ### Assumptions made
 My user story for this was focused on non-scientific users who just want to get a layperson's view of the weather. As a result I limited the precision of the temperature values to 2 decimal places, which I assume is too vague for if that data were being used in a meteorological society app, for example. 
