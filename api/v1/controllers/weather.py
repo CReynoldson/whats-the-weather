@@ -13,15 +13,19 @@ class WeatherHelper():
       
     def __init__(self, *args):
         try:
-            for key, value in args[0].items():
-                if key in self.ARGUMENTS_WHITELIST:
-                    # let users specify 'unit' for ease of use but internally distinguish it from all the base units by calling it temperature_unit
-                    if key == "unit":
-                        if value not in self.TEMPERATURE_UNITS:
-                            raise WeatherServiceInvalidParametersException("You've asked for a temperature unit we can't help you with.")
-                        self.__setattr__("temperature_unit", value)
-                    else:
-                        self.__setattr__(key, value)
+            for key in self.ARGUMENTS_WHITELIST:
+                
+                value = args[0].get(key)
+                if not value:
+                    continue
+
+                # let users specify 'unit' for ease of use but internally distinguish it from all the base units by calling it temperature_unit
+                if key == "unit":
+                    if value not in self.TEMPERATURE_UNITS:
+                        raise WeatherServiceInvalidParametersException("You've asked for a temperature unit we can't help you with.")
+                    self.__setattr__("temperature_unit", value)
+                else:
+                    self.__setattr__(key, value)
         except IndexError:
             raise IndexError("Cannot initialize Weather Helper with no arguments.")
     
@@ -104,15 +108,25 @@ class WeatherHelper():
         :rtype => dict
         Parses OpenWeather API response and returns only the relevant weather data
         """
+
         api_weather_data = response["main"]
+        pressure = api_weather_data["pressure"]
+        humidity = api_weather_data["humidity"]
         weather = {
             "kelvin": api_weather_data,
-            "celsius": {},
-            "fahrenheit": {}
+            "celsius": {
+                "pressure": pressure, 
+                "humidity": humidity
+            },
+            "fahrenheit": {
+                "pressure": pressure, 
+                "humidity": humidity
+            }
         }
 
         for unit in ["celsius", "fahrenheit"]:
-            weather[unit] = self.get_weather_for_unit(api_weather_data, unit)
+            converted_temperatures = self.get_weather_for_unit(api_weather_data, unit)
+            weather[unit].update(converted_temperatures)
         
         return {"weather": weather}
 
