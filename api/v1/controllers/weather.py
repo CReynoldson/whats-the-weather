@@ -6,14 +6,14 @@ class WeatherHelper():
 
     # let's make sure no one passes us anything Nefarious™
     # latitude and longitude aren't implemented yet but seem logical additions 
-    ARGUMENTS_WHITELIST = ["city", "latitude", "longitude", "unit", "precision"]
+    VALID_ARGUMENTS = ["city", "latitude", "longitude", "unit", "precision"]
     TEMPERATURE_UNITS = ["kelvin", "celsius", "fahrenheit"]
     # temperature-relevant keys to loop through when converting temperature values between units
     TEMPERATURE_KEYS = ["feels_like", "temp", "temp_max", "temp_min"]
       
     def __init__(self, *args):
         try:
-            for key in self.ARGUMENTS_WHITELIST:
+            for key in self.VALID_ARGUMENTS:
                 
                 value = args[0].get(key)
                 if not value:
