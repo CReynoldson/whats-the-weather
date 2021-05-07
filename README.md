@@ -23,18 +23,17 @@ Or, access it from the comfort of your own local installation by following the i
 - 1 hour writing tests
 - 1 hour adding data manipulation and error handling to the controller and route files
 - 45 minutes adding files and environment config for deploying to Heroku 
-- 30 minutes writing the Readme because I'm the odd duck that enjoys writing documentation
+- 1 hour writing the Readme because I'm the odd duck that enjoys writing documentation
 - 30 minutes to add authentication handling with hardcoded variable
 - 30 minutes review, bug fixing, general code cleanup
 
 ### Assumptions made
-My user story for this was focused on non-scientific users who just want to get a layperson's view of the weather. As a result I limited the precision of the temperature values to 2 decimal places, which I assume is too vague for if that data were being used in a meteorological society app, for example. 
+I assumed the use case for this data was focused on non-scientific users who just want to get a layperson's view of the weather. As a result I limited the precision of the temperature values to 2 decimal places, which would probably be too vague if that data were being used by meteorologists, statisticians, etc.
 
-I also tried to make the error messages useful but conversational in the way I appreciate as a user of other applications. Unfortunately only users who know how to make requests directly to the API would ever see them, since I failed to implement a UI, but the thought was there.
-
+I also assumed that if the API didn't allow for requesting a specific temperature unit, the requester would like to get all 3 back and can filter their own data from there. 
 
 ### Shortcuts/Compromises made
-I only implemented searching for weather by city which, although it fits the requirements, feels like a shortcut/compromise to me since I wanted to integrate additional filters.
+My authentication stretch feature is more just an example of how authentication on routes could work in the app and is definitely not very secure. It is technically an authenticated route but the authentication token is the same for everyone, so this feature could be a lot more developed and robust. Having one token stored in the environment variables was a shortcut to have working authentication requirements without any unique token handling for different users. 
 
 There is also some code that definitely assumes the only thing the API needs to search on is the city name since that was all I implemented (specifically the get_weather_by_city_name call in the controller's get_weather function). This was a shortcut so I didn't have to integrate potential other filters that the controller should also be able to handle in a production environment.
 
@@ -65,7 +64,7 @@ The dropdown would be populated by a library (not sure which library; I'm making
 
 I believe having a searchable dropdown selector would be an overall better user experience, and it would also help with data integrity issues inherint in the API filter. 
 
-For example, what happens when a user searches the API with just "Portland"? As it is currently, they get weather for both Portland Maine, and Portland Oregon? But which one did they want and how are they able to specify that more clearly? I think as a user I would prefer just the city I asked for, and not also one across the country that happens to have the same name. A drop down would help me avoid that. It would also help minimize user typos by prompting city options, rather than the user having to spell a city properly.
+For example, what happens when a user searches the API with just "Portland"? As it is currently, they get weather for both Portland Maine, and Portland Oregon. But which one did they want and how are they able to specify that more clearly without the ability to add additional filters? I think as a user I would prefer just the city I asked for, and not also one across the country that happens to have the same name. A drop down would help me avoid that. It would also help minimize user typos by prompting city options, rather than the user having to spell a city properly.
 
 
 Results from the API included all 3 temperature units (see Assumptions for more detail), and I would have had the weather details displayed in a box under the city drop down, with tabs to toggle between the different unit views. Clicking a tab would re-render the box with that unit's temperature data.
